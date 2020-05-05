@@ -24,13 +24,11 @@
 #    and best practices on handling the access key credentials.
 
 on: [push]
-name: 'Push'
-#name: Deploy Post image to My Own Amazon ECS
+name: Build POST service Docker image and push it into the Amazon EC Registry
 
 jobs:
   build:
 # deploy:
-#   name: Build POST service Docker image and push it into the Amazon EC Registry
 #   name: Deploy Post service to My ECR and My Kuber Cluster
     runs-on: ubuntu-18.04
 #   runs-on: ubuntu-latest # with Latest got errors in AWS scanner and Kubernetes cluster UnsupportedImageError: The operating system 'ubuntu' version '20.04' is not supported.
@@ -66,9 +64,6 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-      
-    - name: 'Test'
-      run: 'echo "ok"'
 
     #- name: Fill in the new image ID in the Amazon ECS task definition
     #  id: task-def
