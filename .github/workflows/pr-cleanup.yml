@@ -16,8 +16,8 @@ jobs:
         task: 'remove'
         release: 'post-${{ github.event.pull_request.number }}'
 #       release: 'review-post-${{ github.event.pull_request.number }}'
-        version: latest
-#       version: '${{ github.sha }}'
+#       version: latest
+        version: '${{ github.sha }}'
         track: 'stable'
         chart: './helm/post'
         namespace: 'default'

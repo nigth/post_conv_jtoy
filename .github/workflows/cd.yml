@@ -16,8 +16,8 @@ jobs:
       with:
         token: '${{ github.token }}'
         secrets: '${{ toJSON(secrets) }}'
-        version: latest
-#       version: '${{ github.sha }}'
+#       version: latest
+        version: '${{ github.sha }}'
         chart: './helm/post'
       env:
         KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'
